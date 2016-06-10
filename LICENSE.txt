@@ -1,4 +1,4 @@
-Copyright (c) 2014 block_given?
+Copyright (c) 2016 block_given?, Ryota Arai
 
 MIT License
 

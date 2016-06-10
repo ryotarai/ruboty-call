@@ -2,7 +2,7 @@ require 'twilio-ruby'
 require 'uri'
 
 module Ruboty
-  module Call
+  module Callng
     module Actions
       class Call < Ruboty::Actions::Base
         def call

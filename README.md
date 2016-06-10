@@ -1,6 +1,6 @@
-# Ruboty::Call
+# Ruboty::Callng
 
-ruboty plugin for make a call to you.
+ruboty plugin for make a call to you. This plugin is fork of [ruboty-call](https://github.com/blockgiven/ruboty-call)
 
 ## Requirements
 
@@ -11,7 +11,7 @@ ruboty plugin for make a call to you.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruboty-call'
+gem 'ruboty-callng'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ruboty-call
+    $ gem install ruboty-callng
 
 ## Usage
 
@@ -32,30 +32,25 @@ You need to get [Twilio](https://jp.twilio.com/) account and set these environme
 | TWILIO_AUTH_TOKEN   | twilio auth token   |
 | RUBOTY_PHONE_NUMBER | twilio phone number |
 
-then:
+```
+#general> ruboty call +81xxxxxxxxx
+#general< Calling
+```
 
-    @ruboty call +81xxyyyyzzzz オーケー、ルボティー
+Ruboty will call the number and say like "YOURNAME calls you at general channel at Slack. Please open Slack"
 
-    呼び出し中です。
-    相手が応答し、通話中です。
-    相手が応答し、通話中です。
-    相手が応答し、通話中です。
-    相手が応答し、通話が正常に終了しました。
-    recordings:
-    https://api.twilio.com/****-**-**/Accounts/****/Recordings/****.mp3
-    https://api.twilio.com/****-**-**/Accounts/****/Recordings/****.mp3
+### Arbitrary message
 
-You can set language which ruboty speaks by environment variable. the default language is ja-JP.
+```
+> ruboty call +81xxxxxxxxxx Good morning
+< Calling
+```
 
-    RUBOTY_LANG=en-US bundle exec ruboty
-
-see more available languages from:
-
-https://jp.twilio.com/docs/api/twiml/say#attributes-language
+Ruboty accepts English and Japanese message.
 
 ## Contributing
 
-1. Fork it ( https://github.com/blockgiven/ruboty-call/fork )
+1. Fork it ( https://github.com/ryotarai/ruboty-callng/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
