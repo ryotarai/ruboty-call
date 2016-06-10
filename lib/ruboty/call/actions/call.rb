@@ -33,9 +33,9 @@ module Ruboty
             :fallback_method => 'GET',
             :status_callback_method => 'GET',
           })
-          message.reply("電話します")
+          message.reply("Calling")
         rescue => err
-          message.reply("なにかに失敗したよ. #{err}")
+          message.reply("Calling failed: #{err}")
         end
 
         def to
