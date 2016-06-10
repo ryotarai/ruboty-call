@@ -1,5 +1,5 @@
 module Ruboty
-  module Call
+  module Callng
     VERSION = "1.0.0"
   end
 end

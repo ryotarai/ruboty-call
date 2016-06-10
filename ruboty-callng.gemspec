@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ruboty/call/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruboty-call"
-  spec.version       = Ruboty::Call::VERSION
-  spec.authors       = ["block_given?"]
-  spec.email         = ["block_given@outlook.com"]
+  spec.name          = "ruboty-callng"
+  spec.version       = Ruboty::Callng::VERSION
+  spec.authors       = ["block_given?", "Ryota Arai"]
+  spec.email         = ["block_given@outlook.com", "ryota.arai@gmail.com"]
   spec.summary       = %q{ruboty plugin for make a call to you.}
-  spec.homepage      = "https://github.com/blockgiven/ruboty-call"
+  spec.homepage      = "https://github.com/ryotarai/ruboty-callng"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
