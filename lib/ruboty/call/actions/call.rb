@@ -6,7 +6,11 @@ module Ruboty
     module Actions
       class Call < Ruboty::Actions::Base
         def call
-          phone_call
+          phone_call(generate_text)
+        end
+
+        def call_with_message
+          phone_call(message[:text])
         end
 
         private
@@ -19,21 +23,23 @@ module Ruboty
           ENV['RUBOTY_LANG'] || 'ja-JP'
         end
 
-        def phone_call
+        def generate_text
+          channel = message.original[:channel] ? "at #{message.original[:channel]['name']} channel" : ''
+          "#{message.original[:user]['name']} calls you #{channel} in Slack. Please open Slack"
+        end
+
+        def phone_call(text)
           twilio_client.account.calls.create({
             :to => to,
             :from => from,
-            :url => twiml_url,
+            :url => twiml_url(text),
             :method => 'GET',
             :fallback_method => 'GET',
             :status_callback_method => 'GET',
           })
-        rescue
-          message.reply("なにかに失敗したよ.")
-        end
-
-        def text
-          message[:text]
+          message.reply("電話します")
+        rescue => err
+          message.reply("なにかに失敗したよ. #{err}")
         end
 
         def to
@@ -48,7 +54,7 @@ module Ruboty
           Twilio::REST::Client.new account_sid, auth_token
         end
 
-        def twiml
+        def twiml(text)
           <<TWIML
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -57,8 +63,8 @@ module Ruboty
 TWIML
         end
 
-        def twiml_url
-          "http://twimlets.com/echo?Twiml=#{URI.escape(twiml)}"
+        def twiml_url(text)
+          "http://twimlets.com/echo?Twiml=#{URI.escape(twiml(text))}"
         end
       end
     end

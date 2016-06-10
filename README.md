@@ -2,7 +2,9 @@
 
 ruboty plugin for make a call to you.
 
-![screenshot](screenshot.png)
+## Requirements
+
+- ruboty-slack\_rtm
 
 ## Installation
 
