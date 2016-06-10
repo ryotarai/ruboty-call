@@ -19,10 +19,6 @@ module Ruboty
           ENV['RUBOTY_PHONE_NUMBER']
         end
 
-        def language
-          ENV['RUBOTY_LANG'] || 'ja-JP'
-        end
-
         def generate_text
           channel = message.original[:channel] ? "at #{message.original[:channel]['name']} channel" : ''
           "#{message.original[:user]['name']} calls you #{channel} in Slack. Please open Slack"
@@ -54,11 +50,20 @@ module Ruboty
           Twilio::REST::Client.new account_sid, auth_token
         end
 
+        def detect_language(text)
+          case text
+          when /\A[[:ascii:]]+\z/
+            'en-US'
+          when
+            'ja-JP'
+          end
+        end
+
         def twiml(text)
           <<TWIML
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say voice="alice" language="#{language}">#{text}</Say>
+    <Say voice="alice" language="#{detect_language(text)}">#{text}</Say>
 </Response>
 TWIML
         end
