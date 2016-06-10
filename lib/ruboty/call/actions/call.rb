@@ -54,7 +54,7 @@ module Ruboty
           case text
           when /\A[[:ascii:]]+\z/
             'en-US'
-          when
+          else
             'ja-JP'
           end
         end
